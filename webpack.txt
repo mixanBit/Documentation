@@ -1,0 +1,74 @@
+  <script src='dist/bundle.js'></script>
+
+1)npm init или npm install
+2)npm i -D webpack webpack-cli
+
+3)в package.json добавляем:
+"scripts": {
+    "build": "./node_modules/.bin/webpack"
+    "dev": "./node_modules/.bin/webpack --watch"  мгновенно изменяет
+  },
+4)create file (webpack.config.js)
+
+5)в него доборвляем:
+let path = require('path');
+
+module.exports = {
+  mode: 'development',
+  entry: './src/index.js', //основной файл
+  devtool: 'source-map',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  }
+};
+
+6)npm run build //выполнит все изменения
+
+7)основной файл:
+
+//index.js	
+import { Module1 } from './Module1'; //передаёт класс 
+import { Module2 } from './Module2';
+
+const instanceModule1 = new Module1(); //выводит
+const instanceModule1 = new Module2();
+
+---------------------------------------------
+модульный файл:
+
+//Module1.js	
+class Module1 {
+  constructor() {
+    console.log('file Module1 js');
+  }
+}
+
+export{ Module1 };
+
+8)
+loader для js
+npm install -D babel-loader @babel/core @babel/preset-env webpack
+
+в (webpack.config.js) добавить:
+module: {
+  rules: [
+    {
+      test: /\.m?js$/,
+      exclude: /(node_modules)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
+        }
+      }
+    }
+  ]
+}
+
+loader для css
+npm install --save-dev css-loader
+{
+   test: /\.css$/i,
+   use: ['style-loader', 'css-loader'],
+},

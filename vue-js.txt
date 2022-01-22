@@ -1,0 +1,4 @@
+Node.js
+Vue CLI через npm: npm install -g @vue/cli
+создание проекта: vue create (название папки)
+запуск сервера vue run serve
