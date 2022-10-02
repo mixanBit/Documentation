@@ -1,4 +1,6 @@
-1)поставить плагин ACF
+1)
+Регистрация - https://wordpress.org/download/
+поставить плагин ACF
 скачиваем папку в https://underscores.me/
 в темы wordpress загружаем её
 меняем в редактор тем внутренние фалы: header, footer, index.php на свою вёрстку
